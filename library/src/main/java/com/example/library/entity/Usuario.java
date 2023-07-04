@@ -1,8 +1,6 @@
 package com.example.library.entity;
-import com.example.library.dto.UsuarioDTO;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.library.dto.UsuarioDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -29,8 +29,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     @JsonIgnore
     private List<Book> books = new ArrayList<>();
-    public UsuarioDTO obterUsuarioDto(){
-        return new UsuarioDTO(this.id,this.name, this.email, this.books);
+    public UsuarioDto obterUsuarioDto(){
+        return new UsuarioDto(this.id,this.name, this.email, this.books);
     }
 }
 

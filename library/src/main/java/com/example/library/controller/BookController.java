@@ -1,4 +1,5 @@
 package com.example.library.controller;
+import com.example.library.dto.BookDto;
 import com.example.library.entity.Book;
 import com.example.library.service.BookService;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,12 @@ public class BookController {
         this.bookService = bookService;
     }
     @PostMapping
-    public Book createBookController(@RequestBody Book book) {
+    public BookDto createBookController(@RequestBody Book book) {
         return bookService.createBookService(book);
     }
 
     @GetMapping
-    public List<Book> readBookService(){
+    public List<BookDto> readBookService(){
         return bookService.readBookService();
     }
 

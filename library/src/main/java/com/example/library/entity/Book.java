@@ -1,4 +1,5 @@
 package com.example.library.entity;
+import com.example.library.dto.BookDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,11 @@ public class Book {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Usuario usuario;
+
+    public BookDto getBookDto(){
+        return new BookDto(this.name, this.usuario);
+    }
 
 }
