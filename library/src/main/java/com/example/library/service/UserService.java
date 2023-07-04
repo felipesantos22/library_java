@@ -48,7 +48,7 @@ public class UserService {
     public Optional<Usuario> deleteService(int id) {
         return userRepository.findById(id)
                 .map(record -> {
-                    userRepository.findById(id);
+                    userRepository.deleteById(id);
                     return record;
                 });
     }
