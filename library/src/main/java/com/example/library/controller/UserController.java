@@ -5,6 +5,7 @@ import com.example.library.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -14,12 +15,10 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
    @PostMapping
     public UsuarioDto createUserController(@RequestBody Usuario usuario) {
         return userService.createUserService(usuario);
     }
-
     @GetMapping
     public List<UsuarioDto> readUserController(){
         return userService.readUserService();
@@ -31,7 +30,12 @@ public class UserController {
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
-
-
-
+    @PutMapping("/{id}")
+    public Optional<Usuario> updateController(@PathVariable int id, @RequestBody Usuario usuario){
+        return userService.updateService(id, usuario);
+    }
+    @DeleteMapping("/{id}")
+    public Optional<Usuario> deleteController(@PathVariable int id){
+        return userService.deleteService(id);
+    }
 }

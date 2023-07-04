@@ -24,6 +24,7 @@ public class UserService {
         Usuario user = userRepository.save(usuario);
         return user.obterUsuarioDto();
     }
+
     public List<UsuarioDto> readUserService() {
         return userRepository.findAll()
                 .stream()
@@ -31,7 +32,24 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Usuario> findById(int id){
+    public Optional<Usuario> findById(int id) {
         return userRepository.findById(id);
+    }
+
+    public Optional<Usuario> updateService(int id, Usuario usuario) {
+        return userRepository.findById(id)
+                .map(record -> {
+                    record.setName(usuario.getName());
+                    record.setEmail(usuario.getEmail());
+                    return userRepository.save(record);
+                });
+    }
+
+    public Optional<Usuario> deleteService(int id) {
+        return userRepository.findById(id)
+                .map(record -> {
+                    userRepository.findById(id);
+                    return record;
+                });
     }
 }
