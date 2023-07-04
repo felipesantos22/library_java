@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Usuario> readUserController(){
+    public List<UsuarioDTO> readUserController(){
         return userService.readUserService();
     }
 

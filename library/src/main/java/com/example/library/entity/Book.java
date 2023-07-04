@@ -1,8 +1,13 @@
 package com.example.library.entity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
 
     @Id
@@ -15,37 +20,5 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario usuario;
-
-    public Book() {
-    }
-
-    public Book(String name, Usuario usuario) {
-        this.name = name;
-        this.usuario = usuario;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Usuario getUser() {
-        return usuario;
-    }
-
-    public void setUser(Usuario user) {
-        this.usuario = user;
-    }
 
 }

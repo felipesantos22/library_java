@@ -11,7 +11,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
     public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;    }
+        this.bookRepository = bookRepository;
+    }
 
     public Book createBookService(Book book){
         return bookRepository.save(book);
