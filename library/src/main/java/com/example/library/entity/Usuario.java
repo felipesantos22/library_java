@@ -1,4 +1,6 @@
 package com.example.library.entity;
+
+import com.example.library.dto.BookDto;
 import com.example.library.dto.UsuarioDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -26,11 +28,12 @@ public class Usuario {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Book> books = new ArrayList<>();
-    public UsuarioDto obterUsuarioDto(){
-        return new UsuarioDto(this.id,this.name, this.email, this.books);
+
+    public UsuarioDto obterUsuarioDto() {
+        return new UsuarioDto(this.id, this.name, this.email, this.books);
     }
 }
 
