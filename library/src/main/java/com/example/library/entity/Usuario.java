@@ -28,7 +28,7 @@ public class Usuario {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario")
     @JsonIgnore
     private List<Book> books = new ArrayList<>();
 

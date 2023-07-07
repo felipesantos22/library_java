@@ -1,17 +1,15 @@
 package com.example.library.entity;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
@@ -20,7 +18,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
     @Column
@@ -33,6 +31,6 @@ public class Person {
 
     @OneToMany
     @JoinColumn(name = "car_id")
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
 }
