@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/person")
@@ -23,6 +24,12 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     public List<Person> readController(){
         return personService.readService();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Optional<Person> readIdController(@PathVariable int id){
+        return personService.readIdService(id);
     }
 
 

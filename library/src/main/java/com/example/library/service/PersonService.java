@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -18,6 +19,9 @@ public class PersonService {
     }
     public List<Person> readService(){
         return personRepository.findAll();
+    }
+    public Optional<Person> readIdService(int id){
+        return personRepository.findById(id);
     }
 
 
