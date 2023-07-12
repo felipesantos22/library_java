@@ -36,6 +36,9 @@ public class PersonController {
     public Optional<Person> updateController(@PathVariable int id, @RequestBody Person person) {
         return personService.updateService(id, person);
     }
-
-
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Optional<Person> deleteController(@PathVariable int id){
+        return personService.deleteService(id);
+    }
 }

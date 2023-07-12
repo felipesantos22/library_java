@@ -1,5 +1,5 @@
 package com.example.library.entity;
-import com.example.library.dto.BookDto;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(
+    generator = ObjectIdGenerators.PropertyGenerator.class,
+    property = "id"
+)
 public class Book {
 
     @Id
@@ -19,11 +23,8 @@ public class Book {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Usuario usuario;
-
-    public BookDto getBookDto(){
-        return new BookDto(this.name, this.usuario);
-    }
 
 }

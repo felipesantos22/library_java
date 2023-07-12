@@ -1,5 +1,4 @@
 package com.example.library.controller;
-import com.example.library.dto.UsuarioDto;
 import com.example.library.entity.Usuario;
 import com.example.library.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +15,11 @@ public class UserController {
         this.userService = userService;
     }
    @PostMapping
-    public UsuarioDto createUserController(@RequestBody Usuario usuario) {
+    public Usuario createUserController(@RequestBody Usuario usuario) {
         return userService.createUserService(usuario);
     }
     @GetMapping
-    public List<UsuarioDto> readUserController(){
+    public List<Usuario> readUserController(){
         return userService.readUserService();
     }
 
