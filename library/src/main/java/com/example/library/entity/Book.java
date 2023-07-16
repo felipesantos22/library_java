@@ -4,15 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(
-    generator = ObjectIdGenerators.PropertyGenerator.class,
-    property = "id"
-)
 public class Book {
 
     @Id
@@ -24,7 +19,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("books")
     private Usuario usuario;
 
 }
