@@ -21,8 +21,9 @@ public class BookController {
     }
 
     @PostMapping
-    public Book createBookController(@RequestBody Book book) {
-        return bookService.createBookService(book);
+    public BookDto createBookController(@RequestBody Book book) {
+        Book books = bookService.createBookService(book);
+        return modelMapper.map(books, BookDto.class);
     }
 
    /* @GetMapping

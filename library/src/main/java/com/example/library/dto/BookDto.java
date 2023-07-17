@@ -14,5 +14,4 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class BookDto {
     private String name;
-    private UsuarioDto usuarioDto;
 }
