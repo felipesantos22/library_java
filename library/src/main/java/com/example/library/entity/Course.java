@@ -17,8 +17,10 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "course")
     private String course;
+
     @ManyToMany
     @JoinTable(name = "course_subject",
             joinColumns = @JoinColumn(name = "course_id"),
